@@ -1,0 +1,28 @@
+.container{
+    border: 1.5px solid #ee237b;
+    margin: 50px;
+    padding-bottom: 30px;
+    border-radius: 20px;
+}
+
+.logo{
+    border-radius: 20px;
+    margin: 20px;
+    align-items: center;
+}
+
+img.logo {
+    max-width: 100%;
+    height: auto;
+}
+
+.container-form {
+    max-width: 50%; 
+    margin: 0 auto; 
+    padding: 10px; 
+    margin-top: 20px;
+}
+
+.container-form{
+    border-radius: 10px;
+}
