@@ -25,6 +25,6 @@ class Cliente{
         localStorage.setItem('user',JSON.stringify(user))
     }
 
-    //3.0 Actualizar usuario
+    //4.0 Actualizar usuario
 
 }export default Cliente

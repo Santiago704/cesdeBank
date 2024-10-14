@@ -2,7 +2,7 @@ import Cliente from '../js/Cliente.js'
 import Cuenta from '../js/Cuenta.js'
 
 document.addEventListener('DOMContentLoaded', () => {
-    //1.0 Boton de registro de formulario
+    /* -------------------------- 1.0 Boton de registro de formulario --------------------------*/
     const formRegistro = document.getElementById('form-registro')
         if(formRegistro){
             formRegistro.addEventListener('submit', function(event){
@@ -35,4 +35,26 @@ document.addEventListener('DOMContentLoaded', () => {
             window.location.href="index.html"
         }) // fin submit
     } // fin iff
+
+    /* -------------------------- 2.0 Boton de ingreso al cajero --------------------------*/
+    const formIngreso = document.getElementById('form-ingreso')
+    if(formIngreso){
+        formIngreso.addEventListener('submit', function(event){
+            //2.1 Evita que el formulario se envie vacio
+            event.preventDefault()
+
+            //2.2 Recibir la info del formulario de ingreso
+            const email = document.getElementById('InputEmail1').value
+            const password = document.getElementById('InputPassword1').value
+
+            //2.3 Instacia de la clase Cuenta
+            const cuenta = new Cuenta()
+            if(cuenta.entryAtm(email, password)){
+                window.location.href="cajero1.html"
+            }else{
+                alert('Usted ha digitado mal o no se encuentra registrado😣')
+            }
+            
+        })
+    } // fin
 })
