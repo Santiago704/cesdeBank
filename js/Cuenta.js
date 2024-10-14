@@ -1,35 +1,21 @@
-import Cliente from './Cliente.js'
+class Cuenta{
+    constructor(){}
 
-class Cuenta extends Cliente{
-    //1.0 Constructor de la clase cuenta
-    constructor(user, money){
-        super(user, money)
-    }
-
-    //2.0 Metodos de la clase cuenta
-    //2.1 Metodo ingreso a la cuenta
-    ingreso(email, password){
-        let retorno = false
-        let amount= this.user.length
-        for(let i=0; i<amount; i++){
-            if(email===this.user[i].email && password===this.user[i].password){
-                retorno=true
-            }
+    saveNewAccount(){
+        let account
+        let oldAccount = localStorage.getItem('account')
+        if(oldAccount){
+            account = JSON.parse(oldAccount)
+        }else{
+            account = []
         }
-        return retorno
+        let number = account.length+1000
+        account.push({ numAccount: number, money: 0})
+
+        alert(`Cuenta registrada correctamente, numero de cuenta: ${number}`)
+
+        // Guarda el vector en local storage 
+        localStorage.setItem('account',JSON.stringify(account))
     }
-    //2.1 Metodo para consultar saldo 
-
-
-    //2.2 Metodo para realizar deposito
-    realizarDeposito(moneyAdd){
-        return this.money+moneyAdd
-    }
-
-    //2.3 Metodo para realizar retiros
-    realizarRetiro(moneyReduce){
-        return this.money-moneyReduce
-    }
-
 }export default Cuenta
 
