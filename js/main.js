@@ -1,6 +1,7 @@
 import Cliente from '../js/Cliente.js'
 import Cuenta from '../js/Cuenta.js'
 
+
 document.addEventListener('DOMContentLoaded', () => {
     /* -------------------------- 1.0 Boton de registro de formulario --------------------------*/
     const formRegistro = document.getElementById('form-registro')
@@ -51,10 +52,36 @@ document.addEventListener('DOMContentLoaded', () => {
             const cuenta = new Cuenta()
             if(cuenta.entryAtm(email, password)){
                 window.location.href="cajero1.html"
+                localStorage.setItem('emailSaved', email)
             }else{
                 alert('Usted ha digitado mal o no se encuentra registrado😣')
             }
             
         })
     } // fin
+
+    /* ---------------------------- 3.0 Boton de retiro ----------------------------*/
+    const formRetiro = document.getElementById('form-retirar')
+    if(formRetiro){
+        formRetiro.addEventListener('submit', function(event){
+            //3.1 Evita que el formulario se envie vacio
+            event.preventDefault()
+
+            //3.2 Recupero email del local storag
+            const savedEmail = localStorage.getItem('emailSaved')
+
+            //3.2 Recibe la informacion del formulario de retiro
+            const amountMoney = parseFloat(document.getElementById('dinero-retiro').value);
+            const numAccount = parseInt(document.getElementById('confirmar-cuenta').value);
+            console.log(savedEmail);
+            //3.3 Area de resultado 
+            const textArea = document.getElementById('Textarea2')
+
+            //3.4 Instancia de la clase Cuenta
+            const cuenta = new Cuenta()
+            textArea.value = cuenta.withdrawMoney(amountMoney, savedEmail, numAccount)
+
+        })
+    }
 })
+

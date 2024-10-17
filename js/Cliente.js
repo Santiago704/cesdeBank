@@ -15,7 +15,7 @@ class Cliente{
     saveNewUser(){
         let user
         let oldUser = localStorage.getItem('user') // vector con datos antiguos
-        if(oldUser){
+        if(oldUser && oldUser !== null){
             user =JSON.parse(oldUser)
         }else{
             user = []
