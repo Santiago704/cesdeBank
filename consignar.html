@@ -38,25 +38,31 @@
 
                 <!-- 2.0 Columna #2 -->
                 <div class="col-sm-6 border bg-light g-4" id="column2">
-                    <!-- 2.1 cantidad de dinero a consignar -->
-                    <div class="row justify-content-center">
-                        <div class="col-md-6">
-                            <label for="dinero-consignacion" class="form-label">Dinero a consignar</label>
-                            <input type="number" class="form-control" id="dinero-consignacion" min="0">
-                          </div>
-                    </div>
-                    <!-- 2.2 Boton para consignar -->
-                    <div class="row justify-content-center">
-                        <div class="col-3">
-                            <button id="btn-consignar" type="button" class="btn btn-primary btn-sm">Consignar dinero</button>
+                    <form id="form-consignar">
+                        <!-- 2.1 cantidad de dinero a consignar -->
+                        <div class="row justify-content-center">
+                            <div class="col-md-5">
+                                <label for="dinero-consignacion" class="form-label">Dinero a consignar</label>
+                                <input type="number" class="form-control" id="dinero-consignacion" min="0">
+                            </div>
+                            <div class="col-md-5">
+                                <label for="confirmar-cuenta2" class="form-label">Numero de cuenta</label>
+                                <input type="number" class="form-control" id="confirmar-cuenta2" min="1000">
+                            </div>
                         </div>
-                    </div>
-                    <!-- 2.3 Area de texto para resultado -->
-                    <div class="row justify-content-center">
-                        <div class="col-6">
-                            <textarea class="form-control" id="Textarea1" rows="4"></textarea>
-                          </div>
-                    </div>
+                        <!-- 2.2 Boton para consignar -->
+                        <div class="row justify-content-center">
+                            <div class="col-3">
+                                <button id="btn-consignar" type="submit" class="btn btn-primary btn-sm">Consignar dinero</button>
+                            </div>
+                        </div>
+                        <!-- 2.3 Area de texto para resultado -->
+                        <div class="row justify-content-center">
+                            <div class="col-6">
+                                <textarea class="form-control" id="Textarea1" rows="4"></textarea>
+                            </div>
+                        </div>
+                    </form>
                 </div>
 
                 <!-- columna de espacio -->
@@ -86,5 +92,6 @@
             </div>
         </div>
     </main>
+    <script type='module' src="/js/main.js"></script>
 </body>
 </html>

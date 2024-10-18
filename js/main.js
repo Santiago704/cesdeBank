@@ -1,7 +1,6 @@
 import Cliente from '../js/Cliente.js'
 import Cuenta from '../js/Cuenta.js'
 
-
 document.addEventListener('DOMContentLoaded', () => {
     /* -------------------------- 1.0 Boton de registro de formulario --------------------------*/
     const formRegistro = document.getElementById('form-registro')
@@ -30,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             //1.4 Instancia de la clase Cuenta 
             const cuenta = new Cuenta()
-            cuenta.saveNewAccount()
+            cuenta.saveNewAccount(email)
 
             //1.5 Volver a la pagina de login
             window.location.href="index.html"
@@ -67,19 +66,44 @@ document.addEventListener('DOMContentLoaded', () => {
             //3.1 Evita que el formulario se envie vacio
             event.preventDefault()
 
-            //3.2 Recupero email del local storag
+            //3.2 Recupero email  y users del local storag
             const savedEmail = localStorage.getItem('emailSaved')
 
-            //3.2 Recibe la informacion del formulario de retiro
-            const amountMoney = parseFloat(document.getElementById('dinero-retiro').value);
-            const numAccount = parseInt(document.getElementById('confirmar-cuenta').value);
-            console.log(savedEmail);
-            //3.3 Area de resultado 
+            //3.3 Recibe la informacion del formulario de retiro
+            const amountMoney = parseFloat(document.getElementById('dinero-retiro').value)
+            const numAccount = parseInt(document.getElementById('confirmar-cuenta').value)
+
+            //3.4 Area de resultado 
             const textArea = document.getElementById('Textarea2')
 
-            //3.4 Instancia de la clase Cuenta
+            //3.5 Instancia de la clase Cuenta
             const cuenta = new Cuenta()
             textArea.value = cuenta.withdrawMoney(amountMoney, savedEmail, numAccount)
+
+        })
+    }
+
+    /* ---------------------------- 4.0 BOTON INGRESO DINERO ----------------------------*/
+    const formConsignar = document.getElementById('form-consignar')
+    if(formConsignar){
+        formConsignar.addEventListener('submit', function(event){
+            //4.1 Evita que el formulario se envie vacio
+            event.preventDefault()
+
+            //4.2 Recupero email  y users del local storag
+            const savedEmail = localStorage.getItem('emailSaved')
+
+            //4.3 Recibe la informacion del formulario de retiro
+            const amountMoney = parseFloat(document.getElementById('dinero-consignacion').value)
+            const numAccount = parseInt(document.getElementById('confirmar-cuenta2').value) 
+
+            /* const user =  */
+            //4.4 Area de resultado 
+            const textArea = document.getElementById('Textarea1')
+
+            //4.5 Instancia de la clase Cuenta
+            const cuenta = new Cuenta()
+            textArea.value = cuenta.depositeMoney(amountMoney, savedEmail, numAccount)
 
         })
     }
