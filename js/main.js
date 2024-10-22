@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             //3.5 Instancia de la clase Cuenta
             const cuenta = new Cuenta()
-            textArea.value = cuenta.withdrawMoney(amountMoney, sa il, numAccount)
+            textArea.value = cuenta.withdrawMoney(amountMoney, savedEmail, numAccount)
 
         })
     }
@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             //5.5 Instancia de la clase Cuenta
             const cuenta = new Cuenta()
-           /*  textArea.value = cuenta.depositeMoney(amountMoney, savedEmail, numAccount) */
+           textArea.innerHTML = cuenta.transactions(savedEmail, numAccount)
 
         })
     }

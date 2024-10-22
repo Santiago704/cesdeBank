@@ -10,9 +10,13 @@ class Cuenta{
         // Encuentra el usuario por el email
         const user = oldUsers.find(user => user.email === email)
 
-        let number = oldUsers.length + 1000; 
-        user.numAccount = number;
-        user.money = 0; 
+        let number = oldUsers.length + 1000 
+        user.numAccount = number
+        user.money = 0 
+        user.save = {   //Elemento para guardar movim del usuario
+            amount: [],
+            type: []
+        }
 
         alert(`Cuenta registrada num cuenta: ${number}`)
 
@@ -105,7 +109,17 @@ class Cuenta{
 
     //5.0 ----------------------Metodo para mostrar transacciones -------------------------------
     transactions(emailSaved, numAccount){
+        let oldUsers = JSON.parse(localStorage.getItem('user'))
+        
+        //Encontra el usuario y el num cuenta
+        const user = oldUsers.find(user => user.email === emailSaved && user.numAccount === numAccount)
 
+        const number = user.save.type.length
+        let transaction = ''
+        for(let i=0; i<number; i++){
+            transaction = transaction + `<p><b>${user.save.type[i]}:</b> cantidad $${user.save.amount[i]}</p><br>`
+        }
+        return transaction
     }
 }export default Cuenta
 
