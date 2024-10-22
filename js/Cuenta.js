@@ -47,7 +47,9 @@ class Cuenta{
             // Realizo el retiro dependiendo de la cuenta
             if (user.typeAccount === 1) {                  // -------Cuenta ahorros
                 if (user.money-amountMoney >= 0) {
-                    user.money = user.money - amountMoney;
+                    user.money = user.money - amountMoney
+                    user.save.type.push('Retiro')
+                    user.save.amount.push(amountMoney)
                     localStorage.setItem('user', JSON.stringify(oldUsers))
                     return `Factura de retiro Retiraste: ${amountMoney}, nuevo saldo: ${user.money}`
                 } else {
@@ -56,6 +58,8 @@ class Cuenta{
             } else if (user.typeAccount === 2) {           // -------Cuenta corriente
                 if (user.money - amountMoney >= -6000000) {
                     user.money =user.money - amountMoney
+                    user.save.type.push('Retiro')
+                    user.save.amount.push(amountMoney)
                     localStorage.setItem('user', JSON.stringify(oldUsers))
                     return `Factura de retiro Retiraste: ${amountMoney}, nuevo saldo: ${user.money}`
                 } else {
@@ -68,7 +72,7 @@ class Cuenta{
         
     }
 
-    //4.0 Metodo para ingresar dinero
+    //4.0 ------------------------Metodo para ingresar dinero-----------------------------------
     depositeMoney(amountMoney, emailSaved, numAccount){
         let oldUsers = JSON.parse(localStorage.getItem('user'))
         
@@ -81,11 +85,15 @@ class Cuenta{
             //Realiza deposito
             if(user.typeAccount === 1){    //----Cuenta ahorros
                 user.money += amountMoney
+                user.save.type.push('Deposito')
+                user.save.amount.push(amountMoney)
                 localStorage.setItem('user', JSON.stringify(oldUsers))
                 return `Factura de deposito Monto: ${amountMoney}, nuevo saldo: ${user.money}`
             }else if(user.typeAccount === 2){  //----Cuenta corriente
                 if(user.money + amountMoney <= 0){
                     user.money += amountMoney
+                    user.save.type.push('Deposito')
+                    user.save.amount.push(amountMoney)
                     localStorage.setItem('user', JSON.stringify(oldUsers))
                     return `Factura de deposito Monto: ${amountMoney}, nuevo saldo: ${user.money}`
                 }else{
@@ -93,7 +101,10 @@ class Cuenta{
                 }
             }
         }
+    }
 
+    //5.0 ----------------------Metodo para mostrar transacciones -------------------------------
+    transactions(emailSaved, numAccount){
 
     }
 }export default Cuenta

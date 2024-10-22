@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             //3.5 Instancia de la clase Cuenta
             const cuenta = new Cuenta()
-            textArea.value = cuenta.withdrawMoney(amountMoney, savedEmail, numAccount)
+            textArea.value = cuenta.withdrawMoney(amountMoney, sa il, numAccount)
 
         })
     }
@@ -104,6 +104,29 @@ document.addEventListener('DOMContentLoaded', () => {
             //4.5 Instancia de la clase Cuenta
             const cuenta = new Cuenta()
             textArea.value = cuenta.depositeMoney(amountMoney, savedEmail, numAccount)
+
+        })
+    }
+
+    /* ---------------------------- 5.0 BOTON INGRESO DINERO ----------------------------*/
+    const formConsultar = document.getElementById('form-consultar')
+    if(formConsultar){
+        formConsultar.addEventListener('submit', function(event){
+            //5.1 Evita que el formulario se envie vacio
+            event.preventDefault()
+
+            //5.2 Recupero email  y users del local storag
+            const savedEmail = localStorage.getItem('emailSaved')
+
+            //5.3 Recibe la informacion del formulario de retiro
+            const numAccount = parseInt(document.getElementById('confirmar-cuenta3').value) 
+
+            //5.4 Area de resultado 
+            const textArea = document.getElementById('Textarea3')
+
+            //5.5 Instancia de la clase Cuenta
+            const cuenta = new Cuenta()
+           /*  textArea.value = cuenta.depositeMoney(amountMoney, savedEmail, numAccount) */
 
         })
     }
