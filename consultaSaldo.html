@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CesdeBank</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="CSS/styleCsaldo.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-4">
+                    <h1>TRANSACCIONES</h1>
+                    <h5>CESDE BANK</h5>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <div class="row align-items-center" id="row">
+                <!-- 1.0 Columna #1 -->
+                <div class="col-sm-2">
+                    <div class="row">
+                        <a href="retirar.html"><button id="button-retirar" class="btn btn-primary">Retirar</button> </a>
+                    </div>
+                    <div class="row">
+                        <a href="consultaMovimientos.html">
+                            <button id="button-movimientos" type="button" class="btn btn-primary">Consultar movimientos</button>
+                        </a>
+                        
+                    </div>
+                </div>
+                <!-- columna de espacio -->
+                <div class="col-1"></div>
+
+                <!-- 2.0 Columna #2 -->
+                <div class="col-sm-6 border bg-light g-4">
+                    <form id="form-consultar-saldo">
+                     <!-- 2.1 confirmar numero de cue3nta -->
+                        <div class="row justify-content-center" id="info1">
+
+                            <div class="col-md-5">
+                                <label for="confirmar-cuenta" class="form-label">Numero de cuenta</label>
+                             <input type="number" class="form-control" id="confirmar-cuenta4" min="1000">
+                            </div>
+                            <div class="col-3">
+                                <button id="btn-consultar2" type="submit" class="btn btn-primary btn-sm">Consultar</button>
+                            </div>
+                        </div>
+                        <!-- 2.3 Area de texto para resultado -->
+                        <div class="row justify-content-center">
+                            <div class="col-8">
+                                <div class="form-control" id="Textarea4"></div>
+                              </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- columna de espacio -->
+                <div class="col-1"></div>
+
+                <!-- 3.0 Columna #3 -->
+                <div class="col-sm-2">
+                    <div class="row">
+                        <a href="consignar.html">
+                            <button id="button-consignar" type="button" class="btn btn-primary">Consignar</button>
+                        </a>
+                    </div>
+                    <div class="row">
+                        <a href="consultaSaldo.html">
+                            <button id="button-saldo" class="btn btn-primary">Consultar saldo</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- 4.0 row para boton salir -->
+            <div class="row align-items-center justify-content-center">
+                <div class="col-2">
+                    <a href="index.html">
+                        <button id="button-exit" type="button" class="btn btn-secondary">Salir CesdeBank</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script type='module' src="/js/main.js"></script>
+</body>
+</html>

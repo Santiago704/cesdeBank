@@ -121,5 +121,21 @@ class Cuenta{
         }
         return transaction
     }
+
+    //6.0 --------------------------- Metodo para mostrar saldo ---------------------------------
+    money(emailSaved, numAccount){
+        let oldUsers = JSON.parse(localStorage.getItem('user'))
+        
+        //Encontra el usuario y el num cuenta
+        const user = oldUsers.find(user => user.email === emailSaved && user.numAccount === numAccount)
+        let retorno
+        if(!user){
+            retorno = 'Numero de cuenta incorrecta'
+        }else{
+            retorno = `<h4 style="color: #ee237b;">Hola ${user.userName}</h4><ul style="list-style-type:disc;"><li>Saldo: $${user.money}</li></ul>`
+        }
+         return retorno
+    }
+
 }export default Cuenta
 

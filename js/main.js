@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
         })
     }
 
-    /* ---------------------------- 5.0 BOTON INGRESO DINERO ----------------------------*/
+    /* ------------------------- 5.0 BOTON CONSULTAR MOVIMIENTOS -------------------------*/
     const formConsultar = document.getElementById('form-consultar')
     if(formConsultar){
         formConsultar.addEventListener('submit', function(event){
@@ -127,6 +127,29 @@ document.addEventListener('DOMContentLoaded', () => {
             //5.5 Instancia de la clase Cuenta
             const cuenta = new Cuenta()
            textArea.innerHTML = cuenta.transactions(savedEmail, numAccount)
+
+        })
+    }
+
+    /* ------------------------- 6.0 BOTON CONSULTAR SALDO -------------------------*/
+    const formConsultarSaldo = document.getElementById('form-consultar-saldo')
+    if(formConsultarSaldo){
+        formConsultarSaldo.addEventListener('submit', function(event){
+            //5.1 Evita que el formulario se envie vacio
+            event.preventDefault()
+
+            //5.2 Recupero email  y users del local storag
+            const savedEmail = localStorage.getItem('emailSaved')
+
+            //5.3 Recibe la informacion del formulario de retiro
+            const numAccount = parseInt(document.getElementById('confirmar-cuenta4').value) 
+
+            //5.4 Area de resultado 
+            const textArea = document.getElementById('Textarea4')
+
+            //5.5 Instancia de la clase Cuenta
+            const cuenta = new Cuenta()
+            textArea.innerHTML = cuenta.money(savedEmail, numAccount) 
 
         })
     }
