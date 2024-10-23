@@ -51,3 +51,8 @@ img{
     margin-bottom: 30px;
     height: 40px;
 }
+
+#Textarea2{
+    max-height: 130px;
+    overflow: auto;
+}

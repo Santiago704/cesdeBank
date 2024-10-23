@@ -55,9 +55,9 @@ class Cuenta{
                     user.save.type.push('Retiro')
                     user.save.amount.push(amountMoney)
                     localStorage.setItem('user', JSON.stringify(oldUsers))
-                    return `Factura de retiro Retiraste: ${amountMoney}, nuevo saldo: ${user.money}`
+                    return amountMoney
                 } else {
-                    return 'Saldo insuficiente'
+                    return undefined
                 }
             } else if (user.typeAccount === 2) {           // -------Cuenta corriente
                 if (user.money - amountMoney >= -6000000) {
