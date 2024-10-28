@@ -5,7 +5,7 @@ class Cuenta{
 
     //1.0 Metodo para guardar un usuario
     saveNewAccount(email) {
-        let oldUsers = JSON.parse(localStorage.getItem('user'))
+        let oldUsers = JSON.parse(localStorage.getItem('user')) || []
 
         // Encuentra el usuario por el email
         const user = oldUsers.find(user => user.email === email)
@@ -13,6 +13,7 @@ class Cuenta{
         let number = oldUsers.length + 1000 
         user.numAccount = number
         user.money = 0 
+        user.date = new Date()
         user.save = {   //Elemento para guardar movim del usuario
             amount: [],
             type: []
@@ -26,7 +27,7 @@ class Cuenta{
 
     //2.0 Metodo para entrar a la app👍
     entryAtm(email, password){
-        let oldUsers = JSON.parse(localStorage.getItem('user'))
+        let oldUsers = JSON.parse(localStorage.getItem('user')) || []
         let number = oldUsers.length
         let retorno = false
         for(let i=0; i<number; i++){
@@ -39,7 +40,7 @@ class Cuenta{
     }
 
    //3.0 ---------------------Metodo para retiro de dinero--------------------------------
-    withdrawMoney(amountMoney, emailSaved, numAccount) {
+    withdrawMoney(amountMoney, emailSaved, numAccount, discount) {
         let oldUsers = JSON.parse(localStorage.getItem('user'))
     
         // Encuentra el usuario y la cuenta
@@ -60,15 +61,18 @@ class Cuenta{
                     return undefined
                 }
             } else if (user.typeAccount === 2) {           // -------Cuenta corriente
-                if (user.money - amountMoney >= -6000000) {
+                if (user.money - amountMoney >= -discount) {
                     user.money =user.money - amountMoney
                     user.save.type.push('Retiro')
                     user.save.amount.push(amountMoney)
                     localStorage.setItem('user', JSON.stringify(oldUsers))
-                    return `Factura de retiro Retiraste: ${amountMoney}, nuevo saldo: ${user.money}`
+                    return `<h5 style="color: #ee237b;">FACTURA</h5>
+                            <p>Retiraste: $ ${amountMoney}</p>
+                            <p>Nuevo saldo: ${user.money}</p>
+                            <p>Cupo: ${discount}</p>`
                 } else {
 
-                    return 'no cuenta con suficiente saldo'
+                    return '<h5style="color: #ee237b;">ALERTA</h5><p>No cuenta con suficiente saldo</p>'
                 }
             } 
         }

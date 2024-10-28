@@ -1,6 +1,8 @@
 import Cliente from '../js/Cliente.js'
 import Cuenta from '../js/Cuenta.js'
 import CuentaAhorros from '../js/CuentaAhorros.js'
+import CuentaCorriente from '../js/CuentaCorriente.js'
+
 
 document.addEventListener('DOMContentLoaded', () => {
     /* -------------------------- 1.0 Boton de registro de formulario --------------------------*/
@@ -83,11 +85,13 @@ document.addEventListener('DOMContentLoaded', () => {
             //3.5 Instancia de la clase Cuenta y cuenta de ahorro
             if(user.typeAccount === 1){
                 const cuentaAhorros = new CuentaAhorros()
-                let withdrawMoney = cuentaAhorros.withdrawMoney(amountMoney, savedEmail, numAccount)
+                let withdrawMoney = cuentaAhorros.withdrawMoney(amountMoney, savedEmail, numAccount, 0)
                 textArea.innerHTML = cuentaAhorros.calculateInterest(withdrawMoney, savedEmail, numAccount)
-            }else if(user.typeAccount === 1){
-                const cuenta = new Cuenta()
-                textArea.innerHTML = cuenta.withdrawMoney(amountMoney, savedEmail, numAccount)
+            }else if(user.typeAccount === 2){
+                const cuentaCorriente = new CuentaCorriente()
+                let discount = cuentaCorriente.calculateDiscountAllowed(savedEmail, numAccount)
+                console.log(discount);
+                textArea.innerHTML = cuentaCorriente.withdrawMoney(amountMoney, savedEmail, numAccount ,discount)
             }
         })
     }
