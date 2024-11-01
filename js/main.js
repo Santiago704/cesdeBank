@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             //4.5 Instancia de la clase Cuenta
             const cuenta = new Cuenta()
-            textArea.value = cuenta.depositeMoney(amountMoney, savedEmail, numAccount)
+            textArea.innerHTML = cuenta.depositeMoney(amountMoney, savedEmail, numAccount)
 
         })
     }
@@ -166,5 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         })
     }
+
+    /* ------------------------- 7.0 ACTUALIZAR USUARIO -------------------------*/
 })
 

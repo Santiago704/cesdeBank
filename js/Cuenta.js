@@ -96,16 +96,23 @@ class Cuenta{
                 user.save.type.push('Deposito')
                 user.save.amount.push(amountMoney)
                 localStorage.setItem('user', JSON.stringify(oldUsers))
-                return `Factura de deposito Monto: ${amountMoney}, nuevo saldo: ${user.money}`
+                return `<h5 style="color: #ee237b;">FACTURA</h5>
+                        <p>Depositoe: $ ${amountMoney}</p>
+                        <p>Nuevo saldo: ${user.money}</p>
+                        `
             }else if(user.typeAccount === 2){  //----Cuenta corriente
                 if(user.money + amountMoney <= 0){
                     user.money += amountMoney
                     user.save.type.push('Deposito')
                     user.save.amount.push(amountMoney)
                     localStorage.setItem('user', JSON.stringify(oldUsers))
-                    return `Factura de deposito Monto: ${amountMoney}, nuevo saldo: ${user.money}`
+                    return `<h5 style="color: #ee237b;">FACTURA</h5>
+                            <p>Depositoe: $ ${amountMoney}</p>
+                            <p>Nuevo saldo: ${user.money}</p>
+                            `
                 }else{
-                    return `Usted debe menos de ${amountMoney}`
+                    return `<h5 style="color: #ee237b;">EROR</h5>
+                            Usted debe menos de ${amountMoney}`
                 }
             }
         }

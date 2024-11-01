@@ -25,6 +25,25 @@ class Cliente{
         localStorage.setItem('user',JSON.stringify(user))
     }
 
-    //4.0 Actualizar usuario
+    //3.0 Actualizar usuario
+    updateUser(userName, lastName, password, address, email){
+        let oldUser = JSON.parse(localStorage.getItem('user'))
+        const user = oldUser.find(user => user.email === email)
+
+        if(userName){
+            user.userName = userName
+        }
+        if(lastName){
+            user.lastName = lastName
+        }
+        if(password){
+            user.password = password
+        }
+        if(address){
+            user.address = address
+        }
+
+        localStorage.setItem('user', JSON.stringify(oldUser))
+    }
 
 }export default Cliente
