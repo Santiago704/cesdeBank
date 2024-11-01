@@ -148,19 +148,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const formConsultarSaldo = document.getElementById('form-consultar-saldo')
     if(formConsultarSaldo){
         formConsultarSaldo.addEventListener('submit', function(event){
-            //5.1 Evita que el formulario se envie vacio
+            //6.1 Evita que el formulario se envie vacio
             event.preventDefault()
 
-            //5.2 Recupero email  y users del local storag
+            //6.2 Recupero email  y users del local storag
             const savedEmail = localStorage.getItem('emailSaved')
 
-            //5.3 Recibe la informacion del formulario de retiro
+            //6.3 Recibe la informacion del formulario de retiro
             const numAccount = parseInt(document.getElementById('confirmar-cuenta4').value) 
 
-            //5.4 Area de resultado 
+            //6.4 Area de resultado 
             const textArea = document.getElementById('Textarea4')
 
-            //5.5 Instancia de la clase Cuenta
+            //6.5 Instancia de la clase Cuenta
             const cuenta = new Cuenta()
             textArea.innerHTML = cuenta.money(savedEmail, numAccount) 
 
@@ -168,5 +168,28 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ------------------------- 7.0 ACTUALIZAR USUARIO -------------------------*/
+    const formActualizar = document.getElementById('form-actualizar')
+    if(formActualizar){
+        formActualizar.addEventListener('submit', function(event){
+            //7.1 Evita que el formulario se envie vacio
+            event.preventDefault()
+
+            //7.2 Recupero email  y users del local storag
+            const savedEmail = localStorage.getItem('emailSaved')
+
+            //7.3 Recibir la informacion del formulario
+            const userName = document.getElementById('first-name').value
+            const lastName = document.getElementById('last-name').value
+            const password = document.getElementById('inputPassword4').value
+            const address = document.getElementById('inputAddress').value
+            
+            //
+            const cliente = new Cliente()
+            cliente.updateUser(userName, lastName, password, address, savedEmail)
+
+            //7.5 Volver a la pagina de login
+            window.location.href="cajero1.html"
+        })
+    }
 })
 

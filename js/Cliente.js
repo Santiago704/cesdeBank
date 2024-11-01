@@ -44,6 +44,8 @@ class Cliente{
         }
 
         localStorage.setItem('user', JSON.stringify(oldUser))
+
+        return alert(`Hola ${userName} tu usuario ha sido actualizado con exito`)
     }
 
 }export default Cliente
